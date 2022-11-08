@@ -13,7 +13,7 @@ public interface AssessmentsDAO {
     void update(Assessment assessment);
     @Delete
     void delete(Assessment assessment);
-    @Query("SELECT * FROM assessments")
+    @Query("SELECT * FROM assessments ORDER BY assessmentID ASC")
     List<Assessment> getAllAssessments();
 
 

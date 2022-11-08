@@ -7,7 +7,18 @@ import java.util.ArrayList;
 
 @Entity(tableName = "terms")
 public class Term {
+    @PrimaryKey(autoGenerate = true)
+    private int termID;
     private String termDateStart;
+    private String termDateEnd;
+    private String termTitle;
+
+    public Term(int termID, String termDateStart, String termDateEnd, String termTitle) {
+        this.termID = termID;
+        this.termDateStart = termDateStart;
+        this.termDateEnd = termDateEnd;
+        this.termTitle = termTitle;
+    }
 
     @Override
     public String toString() {
@@ -18,12 +29,6 @@ public class Term {
                 ", termID=" + termID +
                 '}';
     }
-
-    private String termDateEnd;
-    private String termTitle;
-    // TODO: Get all courses for a given term, probably a list
-    @PrimaryKey(autoGenerate = true)
-    private int termID;
 
     public int getTermID() {
         return termID;

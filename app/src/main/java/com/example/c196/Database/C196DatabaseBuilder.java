@@ -5,6 +5,8 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import com.example.c196.DAO.AssessmentsDAO;
+import com.example.c196.DAO.CoursesDAO;
+import com.example.c196.DAO.TermsDAO;
 import com.example.c196.Entity.Assessment;
 import com.example.c196.Entity.Course;
 import com.example.c196.Entity.Term;
@@ -15,8 +17,10 @@ import com.example.c196.Entity.Term;
 @Database(entities = {Assessment.class, Course.class, Term.class}, version = 1, exportSchema = false)
 public abstract class C196DatabaseBuilder extends RoomDatabase {
     public abstract AssessmentsDAO assessmentsDAO();
-    // TODO: public abstract CoursesDAO coursesDAO();
-    // TODO: public abstract TermsDAO termsDAO();
+
+    public abstract CoursesDAO coursesDAO();
+
+    public abstract TermsDAO termsDAO();
 
     private static volatile C196DatabaseBuilder INSTANCE;
 
