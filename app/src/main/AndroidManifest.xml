@@ -14,26 +14,39 @@
             android:theme="@style/Theme.C196"
             tools:targetApi="31">
         <activity
-                android:name=".AssesmentsDetails"
-                android:exported="false"/>
+                android:name=".AssessmentsDetails"
+                android:exported="false"
+                android:label="Assessments Detail"
+                android:parentActivityName=".Assessments"/>
         <activity
-                android:name=".Assesments"
-                android:exported="false"/>
+                android:name=".Assessments"
+                android:exported="false"
+                android:label="Assessments"
+                android:parentActivityName=".MainActivity"/>
         <activity
                 android:name=".CoursesDetails"
-                android:exported="false"/>
+                android:exported="false"
+                android:label="Courses Detail"
+                android:parentActivityName=".Courses"/>
         <activity
                 android:name=".Courses"
-                android:exported="false"/>
+                android:exported="false"
+                android:label="Courses"
+                android:parentActivityName=".MainActivity"/>
         <activity
                 android:name=".TermsDetails"
-                android:exported="false"/>
+                android:exported="false"
+                android:label="Terms Detail"
+                android:parentActivityName=".Terms"/>
         <activity
                 android:name=".Terms"
-                android:exported="false"/>
+                android:label="Terms"
+                android:exported="false"
+                android:parentActivityName=".MainActivity"/>
         <activity
                 android:name=".MainActivity"
-                android:exported="true">
+                android:exported="true"
+                android:label="C. Wardlaw C196">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
