@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.c196.Database.Repository;
+import com.example.c196.Entity.Assessment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,5 +28,8 @@ public class MainActivity extends AppCompatActivity {
     public void toAssesments(View view) {
         Intent intent = new Intent(MainActivity.this, Assessments.class);
         startActivity(intent);
+        Repository repo = new Repository(getApplication());
+        Assessment assessment = new Assessment(1,"11-8-2022", "11-9-2022");
+        repo.insert(assessment);
     }
 }
