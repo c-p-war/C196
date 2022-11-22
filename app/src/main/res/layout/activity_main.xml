@@ -21,11 +21,11 @@
             android:layout_marginTop="317dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="122dp"/>
     <Button
-            android:text="Assesments"
+            android:text="Assessments"
             android:layout_width="160dp"
-            android:layout_height="80dp" android:id="@+id/btnAssesments"
-            android:onClick="toAssesments"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="480dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="125dp"/>
+            android:layout_height="80dp" android:id="@+id/btnAssessments"
+            android:onClick="toAssessments" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="480dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="122dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,9 @@
 package com.example.c196;
 
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -31,4 +33,9 @@ public class Terms extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
+
+    public void toAddTerm(View view) {
+        Intent intent = new Intent(Terms.this, TermsAdd.class);
+        startActivity(intent);
+    }
 }

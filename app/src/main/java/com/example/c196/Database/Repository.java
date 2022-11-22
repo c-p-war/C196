@@ -18,7 +18,7 @@ public class Repository {
     private AssessmentsDAO mAssessmentsDAO;
     private CoursesDAO mCoursesDAO;
     private TermsDAO mTermsDAO;
-    private List<Assessment> mAllAssesments;
+    private List<Assessment> mAllAssessments;
     private List<Course> mAllCourses;
     private List<Term> mListAllTerms;
 
@@ -43,6 +43,43 @@ public class Repository {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void insert(Course course) {
+        databaseExecutor.execute(() -> {
+            mCoursesDAO.insert(course);
+        });
+        // To see results in real time, set delay
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void insert(Term term) {
+        databaseExecutor.execute(() -> {
+            mTermsDAO.insert(term);
+        });
+        // To see results in real time, set delay
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Course> getAllCourses() {
+        databaseExecutor.execute(() -> {
+            mAllCourses=mCoursesDAO.getAllCourses();
+        });
+        // To see results in real time, set delay
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return mAllCourses;
     }
 
 
