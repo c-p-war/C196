@@ -31,9 +31,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
                     // Like go to another screen
                     Intent intent = new Intent(context, CoursesDetails.class);
                     // We can add information and key values on the intent
-                    // TODO: Add the other intents for a course
-                    intent.putExtra("id", current.getCourseID());
-                    intent.putExtra("title", current.getCourseTitle());
+                    intent.putExtra("courseTitle", current.getCourseTitle());
+                    intent.putExtra("courseDateStart", current.getCourseDateStart());
+                    intent.putExtra("courseDateEnd", current.getCourseDateEnd());
+                    intent.putExtra("status", current.getStatus());
+                    intent.putExtra("instructorName", current.getInstructorName());
+                    intent.putExtra("instructorPhone", current.getInstructorPhone());
+                    intent.putExtra("instructorEmail", current.getInstructorEmail());
+                    context.startActivity(intent);
                 }
             });
         }
