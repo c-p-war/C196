@@ -12,14 +12,16 @@ import static androidx.room.ForeignKey.CASCADE;
 public class Assessment {
     @PrimaryKey(autoGenerate = true)
     private int assessmentID;
+    private String assessmentTitle;
     private String assessmentDateStart;
     private String assessmentDateEnd;
     private String assessmentType;
 
     private int courseID;
 
-    public Assessment(int assessmentID, String assessmentDateStart, String assessmentDateEnd, String assessmentType, int courseID) {
+    public Assessment(int assessmentID, String assessmentTitle, String assessmentDateStart, String assessmentDateEnd, String assessmentType, int courseID) {
         this.assessmentID = assessmentID;
+        this.assessmentTitle = assessmentTitle;
         this.assessmentDateEnd = assessmentDateEnd;
         this.assessmentDateStart = assessmentDateStart;
         this.assessmentType = assessmentType;
@@ -32,6 +34,11 @@ public class Assessment {
 
     public void setAssessmentID(int assessmentID) {
         this.assessmentID = assessmentID;
+    }
+
+    public String getAssessmentTitle(){return assessmentTitle;}
+    public void setAssessmentTitle(String assessmentTitle){
+        this.assessmentTitle = assessmentTitle;
     }
 
     public String getAssessmentDateStart() {

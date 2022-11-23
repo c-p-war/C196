@@ -6,5 +6,77 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".AssessmentsDetails">
-
+    <ScrollView
+            android:layout_width="407dp"
+            android:layout_height="722dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+    >
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Title:">
+                </TextView>
+                <EditText
+                        android:id="@+id/editATitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="String">
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Start:">
+                </TextView>
+                <EditText
+                        android:id="@+id/editAStart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="String">
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="End:">
+                </TextView>
+                <EditText
+                        android:id="@+id/editAEnd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="String">
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Type:">
+                </TextView>
+                <EditText
+                        android:id="@+id/editAType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="String">
+                </EditText>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

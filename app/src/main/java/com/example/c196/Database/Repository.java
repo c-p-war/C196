@@ -4,8 +4,10 @@ import android.app.Application;
 import com.example.c196.DAO.AssessmentsDAO;
 import com.example.c196.DAO.CoursesDAO;
 import com.example.c196.DAO.TermsDAO;
+import com.example.c196.DAO.NotesDAO;
 import com.example.c196.Entity.Assessment;
 import com.example.c196.Entity.Course;
+import com.example.c196.Entity.Note;
 import com.example.c196.Entity.Term;
 
 import java.util.List;
@@ -18,9 +20,12 @@ public class Repository {
     private AssessmentsDAO mAssessmentsDAO;
     private CoursesDAO mCoursesDAO;
     private TermsDAO mTermsDAO;
+
+    private NotesDAO mNotesDAO;
     private List<Assessment> mAllAssessments;
     private List<Course> mAllCourses;
     private List<Term> mAllTerms;
+    private List<Note> mAllNotes;
 
     private static int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -30,6 +35,7 @@ public class Repository {
         mAssessmentsDAO = db.assessmentsDAO();
         mCoursesDAO = db.coursesDAO();
         mTermsDAO = db.termsDAO();
+        mNotesDAO = db.notesDAO();
     }
 
     // TODO: Create one of these for each CRUD action
@@ -68,6 +74,17 @@ public class Repository {
             e.printStackTrace();
         }
     }
+    public void insert(Note note) {
+        databaseExecutor.execute(() -> {
+            mNotesDAO.insert(note);
+        });
+        // To see results in real time, set delay
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     public List<Course> getAllCourses() {
         databaseExecutor.execute(() -> {
@@ -93,6 +110,32 @@ public class Repository {
             e.printStackTrace();
         }
         return mAllTerms;
+    }
+
+    public List<Assessment> getAllAssessments() {
+        databaseExecutor.execute(() -> {
+            mAllAssessments=mAssessmentsDAO.getAllAssessments();
+        });
+        // To see results in real time, set delay
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return mAllAssessments;
+    }
+
+    public List<Note> getAllNotes() {
+        databaseExecutor.execute(() -> {
+            mAllNotes=mNotesDAO.getAllNotes();
+        });
+        // To see results in real time, set delay
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return mAllNotes;
     }
 
 
