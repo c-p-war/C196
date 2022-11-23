@@ -20,7 +20,7 @@ public class Repository {
     private TermsDAO mTermsDAO;
     private List<Assessment> mAllAssessments;
     private List<Course> mAllCourses;
-    private List<Term> mListAllTerms;
+    private List<Term> mAllTerms;
 
     private static int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -80,6 +80,19 @@ public class Repository {
             e.printStackTrace();
         }
         return mAllCourses;
+    }
+
+    public List<Term> getAllTerms() {
+        databaseExecutor.execute(() -> {
+            mAllTerms=mTermsDAO.getAllTerms();
+        });
+        // To see results in real time, set delay
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return mAllTerms;
     }
 
 

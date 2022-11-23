@@ -6,6 +6,12 @@ import android.view.MenuItem;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.c196.Database.Repository;
+import com.example.c196.Entity.Term;
+
+import java.util.List;
 
 public class Terms extends AppCompatActivity {
 
@@ -15,6 +21,13 @@ public class Terms extends AppCompatActivity {
         setContentView(R.layout.activity_terms);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        RecyclerView recyclerView = findViewById(R.id.terms_recycler);
+        Repository repo = new Repository(getApplication());
+        List<Term> terms = repo.getAllTerms();
+        final TermAdapter adapter = new TermAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter.setTerms(terms);
     }
     // Creates the menu
         public boolean onCreateOptionsMenu(Menu menu){
