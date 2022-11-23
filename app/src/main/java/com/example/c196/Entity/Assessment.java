@@ -1,19 +1,29 @@
 package com.example.c196.Entity;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "assessments")
+import static androidx.room.ForeignKey.CASCADE;
+
+@Entity(tableName = "assessments",
+        foreignKeys = @ForeignKey(entity = Course.class,
+                parentColumns = "courseID", childColumns = "courseID", onDelete = CASCADE))
 public class Assessment {
     @PrimaryKey(autoGenerate = true)
     private int assessmentID;
     private String assessmentDateStart;
     private String assessmentDateEnd;
+    private String assessmentType;
 
-    public Assessment(int assessmentID, String assessmentDateStart, String assessmentDateEnd) {
+    private int courseID;
+
+    public Assessment(int assessmentID, String assessmentDateStart, String assessmentDateEnd, String assessmentType, int courseID) {
         this.assessmentID = assessmentID;
         this.assessmentDateEnd = assessmentDateEnd;
         this.assessmentDateStart = assessmentDateStart;
+        this.assessmentType = assessmentType;
+        this.courseID = courseID;
     }
 
     public int getAssessmentID() {
@@ -38,5 +48,21 @@ public class Assessment {
 
     public void setAssessmentDateEnd(String assessmentDateEnd) {
         this.assessmentDateEnd = assessmentDateEnd;
+    }
+
+    public String getAssessmentType() {
+        return assessmentType;
+    }
+
+    public void setAssessmentType(String assessmentType) {
+        this.assessmentType = assessmentType;
+    }
+
+    public int getCourseID() {
+        return courseID;
+    }
+
+    public void setCourseID(int courseID) {
+        this.courseID = courseID;
     }
 }

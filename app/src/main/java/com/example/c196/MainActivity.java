@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 //        repo.insert(new Course(3, 2, "Course C", "12-1-2022", "06-1-2023", "Not Started", "John", "123-456-1234", "john@gmail.com"));
 //        repo.insert(new Course(4, 2, "Course D", "12-1-2022", "06-1-2023", "Not Started", "Jane", "987-654-3210", "jane@gmail.com"));
 
-        repo.insert(new Assessment(1, "11-11-2022", "11-12-2022"));
+        repo.insert(new Assessment(1, "11-11-2022", "11-12-2022", "MC", 1));
     }
 
     public void toTerms(View view) {
