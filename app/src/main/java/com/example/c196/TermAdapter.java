@@ -31,6 +31,7 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
                     // Like go to another screen
                     Intent intent = new Intent(context, TermsDetails.class);
 //                    // We can add information and key values on the intent
+                    intent.putExtra("termID", current.getTermID());
                     intent.putExtra("termTitle", current.getTermTitle());
                     intent.putExtra("termDateStart", current.getTermDateStart());
                     intent.putExtra("termDateEnd", current.getTermDateEnd());
