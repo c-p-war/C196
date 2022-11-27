@@ -31,6 +31,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
                     // Like go to another screen
                     Intent intent = new Intent(context, CoursesDetails.class);
                     // We can add information and key values on the intent
+                    intent.putExtra("termID", current.getTermID());
+                    intent.putExtra("courseID", current.getCourseID());
                     intent.putExtra("courseTitle", current.getCourseTitle());
                     intent.putExtra("courseDateStart", current.getCourseDateStart());
                     intent.putExtra("courseDateEnd", current.getCourseDateEnd());

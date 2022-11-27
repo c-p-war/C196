@@ -1,5 +1,6 @@
 package com.example.c196;
 
+import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ public class TermsDetails extends AppCompatActivity {
     String termStart;
     String termEnd;
     int termId;
+    Repository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class TermsDetails extends AppCompatActivity {
         RecyclerView recyclerView=findViewById(R.id.term_courses_recycler);
         final CourseAdapter adapter = new CourseAdapter(this);
         Repository repo = new Repository(getApplication());
+        repository = repo;
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<Course> matchingCourses = new ArrayList<>();
@@ -49,11 +52,17 @@ public class TermsDetails extends AppCompatActivity {
             if(c.getTermID() == termId) matchingCourses.add(c);
         }
         adapter.setCourses(matchingCourses);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        List<EntityCourses> filteredCourses = new ArrayList<>();
-//        for (EntityCourses c : repository.getAllCourses()){
-//            if(c.getTermID() == termID) filteredCourses.add(c);
-//        }
-//        adapterCourse.setCourses(filteredCourses);
+    }
+
+    public void saveBtn(View view) {
+        Term term;
+        if (termId == -1){
+            int newID = repository.getAllTerms().get(repository.getAllTerms().size() - 1).getTermID() + 1;
+            term = new Term(newID, editStart.getText().toString(), editEnd.getText().toString(),editTitle.getText().toString());
+            repository.insert(term);
+        } else {
+            term = new Term(termId, editStart.getText().toString(), editEnd.getText().toString(), editTitle.getText().toString());
+            repository.update(term);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.c196.Database;
 
 import android.app.Application;
+import com.example.c196.AssessmentAdapter;
 import com.example.c196.DAO.AssessmentsDAO;
 import com.example.c196.DAO.CoursesDAO;
 import com.example.c196.DAO.TermsDAO;
@@ -74,6 +75,7 @@ public class Repository {
             e.printStackTrace();
         }
     }
+
     public void insert(Note note) {
         databaseExecutor.execute(() -> {
             mNotesDAO.insert(note);
@@ -88,7 +90,7 @@ public class Repository {
 
     public List<Course> getAllCourses() {
         databaseExecutor.execute(() -> {
-            mAllCourses=mCoursesDAO.getAllCourses();
+            mAllCourses = mCoursesDAO.getAllCourses();
         });
         // To see results in real time, set delay
         try {
@@ -101,7 +103,7 @@ public class Repository {
 
     public List<Term> getAllTerms() {
         databaseExecutor.execute(() -> {
-            mAllTerms=mTermsDAO.getAllTerms();
+            mAllTerms = mTermsDAO.getAllTerms();
         });
         // To see results in real time, set delay
         try {
@@ -114,7 +116,7 @@ public class Repository {
 
     public List<Assessment> getAllAssessments() {
         databaseExecutor.execute(() -> {
-            mAllAssessments=mAssessmentsDAO.getAllAssessments();
+            mAllAssessments = mAssessmentsDAO.getAllAssessments();
         });
         // To see results in real time, set delay
         try {
@@ -127,7 +129,7 @@ public class Repository {
 
     public List<Note> getAllNotes() {
         databaseExecutor.execute(() -> {
-            mAllNotes=mNotesDAO.getAllNotes();
+            mAllNotes = mNotesDAO.getAllNotes();
         });
         // To see results in real time, set delay
         try {
@@ -136,6 +138,94 @@ public class Repository {
             e.printStackTrace();
         }
         return mAllNotes;
+    }
+
+    public void update(Term term) {
+        databaseExecutor.execute(() -> {
+            mTermsDAO.update(term);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update(Course course) {
+        databaseExecutor.execute(() -> {
+            mCoursesDAO.update(course);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update(Assessment assessment) {
+        databaseExecutor.execute(() -> {
+            mAssessmentsDAO.update(assessment);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update(Note note) {
+        databaseExecutor.execute(() -> {
+            mNotesDAO.update(note);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Term term) {
+        databaseExecutor.execute(() -> {
+            mTermsDAO.delete(term);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Course course) {
+        databaseExecutor.execute(() -> {
+            mCoursesDAO.delete(course);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Assessment assessment) {
+        databaseExecutor.execute(() -> {
+            mAssessmentsDAO.delete(assessment);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Note note) {
+        databaseExecutor.execute(() -> {
+            mNotesDAO.delete(note);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 

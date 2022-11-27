@@ -1,5 +1,6 @@
 package com.example.c196;
 
+import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,5 +31,8 @@ public class AssessmentsDetails extends AppCompatActivity {
         editStart.setText(aStart);
         editEnd.setText(aEnd);
         editType.setText(aType);
+    }
+
+    public void saveBtn(View view) {
     }
 }

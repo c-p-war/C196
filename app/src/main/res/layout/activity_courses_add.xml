@@ -156,11 +156,7 @@
                         android:clickable="true"
                         android:onClick="saveBtn"
                         android:text="Save"/>
-
-
             </LinearLayout>
-
-
         </LinearLayout>
     </ScrollView>
 

@@ -106,6 +106,19 @@
                         android:layout_height="wrap_content"
                         android:hint="Course A"/>
             </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <Button
+                        android:id="@+id/saveBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="80dp"
+                        android:clickable="true"
+                        android:onClick="saveBtn"
+                        android:text="Save"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
