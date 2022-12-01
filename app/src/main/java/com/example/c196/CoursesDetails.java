@@ -1,5 +1,6 @@
 package com.example.c196;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.c196.Database.Repository;
 import com.example.c196.Entity.Assessment;
 import com.example.c196.Entity.Course;
-import com.example.c196.Entity.Term;
+import com.example.c196.Entity.Note;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 public class CoursesDetails extends AppCompatActivity {
     // Setting the fields for the detail view
     EditText editTerm;
+    EditText editId;
     EditText editTitle;
     EditText editStart;
     EditText editEnd;
@@ -34,30 +36,33 @@ public class CoursesDetails extends AppCompatActivity {
     String instructorPhone;
     String instructorEmail;
     Repository repository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courses_details);
-        editTerm=findViewById(R.id.editTermId);
-        editTitle=findViewById(R.id.editCourseTitle);
-        editStart=findViewById(R.id.editCourseDateStart);
-        editEnd=findViewById(R.id.editCourseDateEnd);
-        editStatus_=findViewById(R.id.editStatus);
-        editName=findViewById(R.id.editInstructorName);
-        editPhone=findViewById(R.id.editInstructorPhone);
-        editEmail=findViewById(R.id.editInstructorEmail);
+        editTerm = findViewById(R.id.editTermId);
+        editId = findViewById(R.id.editCourseId);
+        editTitle = findViewById(R.id.editCourseTitle);
+        editStart = findViewById(R.id.editCourseDateStart);
+        editEnd = findViewById(R.id.editCourseDateEnd);
+        editStatus_ = findViewById(R.id.editStatus);
+        editName = findViewById(R.id.editInstructorName);
+        editPhone = findViewById(R.id.editInstructorPhone);
+        editEmail = findViewById(R.id.editInstructorEmail);
         // Using getDoubleExtra will require a default value
-        courseId = getIntent().getIntExtra("courseID", -1);
         termId = getIntent().getIntExtra("termID", -1);
-        courseTitle=getIntent().getStringExtra("courseTitle");
-        courseDateStart=getIntent().getStringExtra("courseDateStart");
-        courseDateEnd=getIntent().getStringExtra("courseDateEnd");
-        status=getIntent().getStringExtra("status");
-        instructorName=getIntent().getStringExtra("instructorName");
-        instructorPhone=getIntent().getStringExtra("instructorPhone");
-        instructorEmail=getIntent().getStringExtra("instructorEmail");
+        courseId = getIntent().getIntExtra("courseID", -1);
+        courseTitle = getIntent().getStringExtra("courseTitle");
+        courseDateStart = getIntent().getStringExtra("courseDateStart");
+        courseDateEnd = getIntent().getStringExtra("courseDateEnd");
+        status = getIntent().getStringExtra("status");
+        instructorName = getIntent().getStringExtra("instructorName");
+        instructorPhone = getIntent().getStringExtra("instructorPhone");
+        instructorEmail = getIntent().getStringExtra("instructorEmail");
 
         editTerm.setText(Integer.toString(termId));
+        editId.setText(Integer.toString(courseId));
         editTitle.setText(courseTitle);
         editStart.setText(courseDateStart);
         editEnd.setText(courseDateEnd);
@@ -68,29 +73,40 @@ public class CoursesDetails extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        RecyclerView recyclerView=findViewById(R.id.course_assessments_recycler);
+        // Assessments list
+        RecyclerView recyclerView = findViewById(R.id.course_assessments_recycler);
         final AssessmentAdapter adapter = new AssessmentAdapter(this);
         Repository repo = new Repository(getApplication());
         repository = repo;
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<Assessment> matchingAssessments = new ArrayList<>();
-        for (Assessment a : repo.getAllAssessments()){
-            if(a.getCourseID() == courseId) matchingAssessments.add(a);
+        for (Assessment a : repo.getAllAssessments()) {
+            if (a.getCourseID() == courseId) matchingAssessments.add(a);
         }
         adapter.setAssessments(matchingAssessments);
+        // Notes list
+        RecyclerView recyclerViewNotes = findViewById(R.id.course_notes_recycler);
+        final NoteAdapter noteAdapter = new NoteAdapter(this);
+        Repository repoNote = new Repository(getApplication());
+        recyclerViewNotes.setAdapter(noteAdapter);
+        recyclerViewNotes.setLayoutManager(new LinearLayoutManager(this));
+        List<Note> matchingNotes = new ArrayList<>();
+        for (Note n : repoNote.getAllNotes()) {
+            if (n.getCourseID() == courseId) matchingNotes.add(n);
+        }
+        noteAdapter.setNotes(matchingNotes);
     }
 
     public void saveBtn(View view) {
-        // TODO: Ensure that you convert the string to an int for the id
         Course course;
-        if (courseId == -1){
+        if (courseId == -1) {
             int newID = repository.getAllCourses().get(repository.getAllCourses().size() - 1).getCourseID() + 1;
-//            course = new Course(courseId,);
-//            repository.insert(course);
+            course = new Course(newID, Integer.parseInt(editTerm.getText().toString()), editTitle.getText().toString(), editStart.getText().toString(), editEnd.getText().toString(), editStatus_.getText().toString(), editName.getText().toString(), editPhone.getText().toString(), editEmail.getText().toString());
+            repository.insert(course);
         } else {
-//            course = new Course(courseId);
-//            repository.update(course);
+            course = new Course(Integer.parseInt(editId.getText().toString()), Integer.parseInt(editTerm.getText().toString()), editTitle.getText().toString(), editStart.getText().toString(), editEnd.getText().toString(), editStatus_.getText().toString(), editName.getText().toString(), editPhone.getText().toString(), editEmail.getText().toString());
+            repository.update(course);
         }
     }
 }

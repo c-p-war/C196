@@ -22,15 +22,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Term ID:">
+                </TextView>
+                <EditText
+                        android:id="@+id/editTermId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Int">
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                 <TextView
-                        android:id="@+id/view_term_title"
+                        android:id="@+id/view_course_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Course Title: "/>
 
                 <EditText
-                        android:id="@+id/edit_term_title"
+                        android:id="@+id/edit_course_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Title"/>
@@ -42,12 +57,12 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                 <TextView
-                        android:id="@+id/view_term_start_date"
+                        android:id="@+id/view_course_start_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Start Date: "/>
                 <EditText
-                        android:id="@+id/edit_term_start_date"
+                        android:id="@+id/edit_course_start_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="MM - DD - YY"/>
@@ -59,7 +74,7 @@
                     android:orientation="horizontal">
 
                 <TextView
-                        android:id="@+id/text_term_end_date"
+                        android:id="@+id/text_course_end_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="End Date: "/>
