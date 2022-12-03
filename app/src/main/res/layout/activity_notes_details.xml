@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".CoursesNotes">
+        tools:context=".NotesDetails">
     <ScrollView
             android:layout_width="407dp"
             android:layout_height="722dp"
@@ -17,41 +17,61 @@
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
-            <EditText
-                    android:id="@+id/courseNote"
+            <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="550dp"
-                    android:layout_marginTop="88dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Note ID:">
+                </TextView>
+                <EditText
+                        android:id="@+id/editNoteId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Int">
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Course ID:">
+                </TextView>
+                <EditText
+                        android:id="@+id/editCourseId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Int">
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Title:">
+                </TextView>
+                <EditText
+                        android:id="@+id/editTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="String">
+                </EditText>
+            </LinearLayout>
+            <EditText
+                    android:id="@+id/editCourseNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="100dp"
                     android:ems="10"
                     android:gravity="start|top"
                     android:inputType="textMultiLine"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
-            <!--            <Button-->
-            <!--                    android:id="@+id/saveBtn"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_marginTop="92dp"-->
-            <!--                    android:clickable="true"-->
-            <!--                    android:onClick="saveBtn"-->
-            <!--                    android:text="Save"/>-->
-
-            <!--            <Button-->
-            <!--                    android:id="@+id/cancelBtn"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_marginTop="92dp"-->
-            <!--                    android:layout_marginEnd="100dp"-->
-            <!--                    android:text="Cancel"/>-->
-
-            <!--            <Button-->
-            <!--                    android:id="@+id/shareBtn"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_marginBottom="56dp"-->
-            <!--                    android:clickable="true"-->
-            <!--                    android:onClick="shareBtn"-->
-            <!--                    android:text="share"/>-->
         </LinearLayout>
     </ScrollView>
     <Button

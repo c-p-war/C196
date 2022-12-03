@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.c196.Database.Repository;
 import com.example.c196.Entity.Assessment;
-import com.example.c196.Entity.Course;
 
 public class AssessmentsDetails extends AppCompatActivity {
     EditText editCourseId;
@@ -81,7 +80,7 @@ public class AssessmentsDetails extends AppCompatActivity {
     }
 
     public void deleteBtn(View view) {
-        if (assessmentId != -1){
+        if (assessmentId != -1) {
             for (Assessment assessment : repository.getAllAssessments()) {
                 if (assessment.getAssessmentID() == assessmentId) currentAssessment = assessment;
             }

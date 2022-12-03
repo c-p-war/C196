@@ -11,13 +11,11 @@ import com.example.c196.Database.Repository;
 import com.example.c196.Entity.Assessment;
 import com.example.c196.Entity.Course;
 import com.example.c196.Entity.Note;
-import com.example.c196.Entity.Term;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CoursesDetails extends AppCompatActivity {
-    // Setting the fields for the detail view
     EditText editTerm;
     EditText editId;
     EditText editTitle;
@@ -52,7 +50,7 @@ public class CoursesDetails extends AppCompatActivity {
         editName = findViewById(R.id.editInstructorName);
         editPhone = findViewById(R.id.editInstructorPhone);
         editEmail = findViewById(R.id.editInstructorEmail);
-        // Using getDoubleExtra will require a default value
+
         termId = getIntent().getIntExtra("termID", -1);
         courseId = getIntent().getIntExtra("courseID", -1);
         courseTitle = getIntent().getStringExtra("courseTitle");
@@ -128,5 +126,7 @@ public class CoursesDetails extends AppCompatActivity {
     }
 
     public void addNoteBtn(View view) {
+        Intent intent = new Intent(CoursesDetails.this, NotesAdd.class);
+        startActivity(intent);
     }
 }

@@ -12,8 +12,8 @@
             android:layout_marginStart="1dp"
             android:layout_marginTop="1dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/scrollView2">
+            app:layout_constraintTop_toTopOf="parent">
+<!--            android:id="@+id/scrollView2">-->
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
@@ -120,6 +120,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/deleteBtn"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
             app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

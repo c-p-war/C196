@@ -3,7 +3,6 @@ package com.example.c196;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,7 +28,6 @@ public class TermsDetails extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO: Get the term id
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terms_details);
         editTitle = findViewById(R.id.editTermTitle);
@@ -90,8 +88,5 @@ public class TermsDetails extends AppCompatActivity {
             startActivity(intent);
         }
         // TODO: Add alert that course cannot be deleted
-//        else {
-//            Toast.makeText(TermsDetails.this, "Cannot delete term with associated courses", Toast.LENGTH_LONG).show();
-//        }
     }
 }

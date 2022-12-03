@@ -11,10 +11,6 @@ import com.example.c196.Entity.Note;
 import com.example.c196.Entity.Term;
 
 public class MainActivity extends AppCompatActivity {
-// TODO: Create and populate mock data on load in
-    // TODO: Setup terms fields
-// TODO: Display mock data in terms
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

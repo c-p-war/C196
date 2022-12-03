@@ -29,9 +29,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
                     final Note current = mNotes.get(position);
                     // Now that we have the position of the clicked product in the list, we can do all types of cool stuff
                     // Like go to another screen
-                    Intent intent = new Intent(context, CoursesNotes.class);
+                    Intent intent = new Intent(context, NotesDetails.class);
                     // We can add information and key values on the intent
                     intent.putExtra("noteID", current.getNoteID());
+                    intent.putExtra("courseID", current.getCourseID());
                     intent.putExtra("noteTitle", current.getNoteTitle());
                     intent.putExtra("noteText", current.getNoteText() );
                     context.startActivity(intent);
