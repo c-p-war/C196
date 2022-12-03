@@ -31,6 +31,8 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
                     // Like go to another screen
                     Intent intent = new Intent(context, AssessmentsDetails.class);
                     // We can add information and key values on the intent
+                    intent.putExtra("assessmentID", current.getAssessmentID());
+                    intent.putExtra("courseID", current.getCourseID());
                     intent.putExtra("assessmentTitle", current.getAssessmentTitle());
                     intent.putExtra("assessmentDateStart", current.getAssessmentDateStart());
                     intent.putExtra("assessmentDateEnd", current.getAssessmentDateEnd());

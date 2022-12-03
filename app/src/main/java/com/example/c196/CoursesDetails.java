@@ -11,6 +11,7 @@ import com.example.c196.Database.Repository;
 import com.example.c196.Entity.Assessment;
 import com.example.c196.Entity.Course;
 import com.example.c196.Entity.Note;
+import com.example.c196.Entity.Term;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,7 @@ public class CoursesDetails extends AppCompatActivity {
     String instructorPhone;
     String instructorEmail;
     Repository repository;
+    Course currentCourse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,9 +106,27 @@ public class CoursesDetails extends AppCompatActivity {
             int newID = repository.getAllCourses().get(repository.getAllCourses().size() - 1).getCourseID() + 1;
             course = new Course(newID, Integer.parseInt(editTerm.getText().toString()), editTitle.getText().toString(), editStart.getText().toString(), editEnd.getText().toString(), editStatus_.getText().toString(), editName.getText().toString(), editPhone.getText().toString(), editEmail.getText().toString());
             repository.insert(course);
+            Intent intent = new Intent(CoursesDetails.this, Courses.class);
+            startActivity(intent);
         } else {
             course = new Course(Integer.parseInt(editId.getText().toString()), Integer.parseInt(editTerm.getText().toString()), editTitle.getText().toString(), editStart.getText().toString(), editEnd.getText().toString(), editStatus_.getText().toString(), editName.getText().toString(), editPhone.getText().toString(), editEmail.getText().toString());
             repository.update(course);
+            Intent intent = new Intent(CoursesDetails.this, Courses.class);
+            startActivity(intent);
         }
+    }
+
+    public void deleteBtn(View view) {
+        if (courseId != -1){
+            for (Course course : repository.getAllCourses()) {
+                if (course.getCourseID() == courseId) currentCourse = course;
+            }
+            repository.delete(currentCourse);
+            Intent intent = new Intent(CoursesDetails.this, Courses.class);
+            startActivity(intent);
+        }
+    }
+
+    public void addNoteBtn(View view) {
     }
 }

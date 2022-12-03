@@ -23,6 +23,36 @@
                     android:orientation="horizontal">
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
+                          android:text="Assessment Id:">
+                </TextView>
+                <EditText
+                        android:id="@+id/editAId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="String">
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Course ID:">
+                </TextView>
+                <EditText
+                        android:id="@+id/editACourseId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="String">
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
                           android:text="Title:">
                 </TextView>
                 <EditText
@@ -90,4 +120,13 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginBottom="16dp"
             android:layout_marginStart="16dp"/>
+    <Button
+            android:onClick="deleteBtn"
+            android:text="Delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/deleteBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

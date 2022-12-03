@@ -13,28 +13,28 @@
             android:layout_marginTop="1dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-    >
+            android:id="@+id/scrollView3">
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
             <EditText
                     android:id="@+id/courseNote"
-                    android:layout_width="233dp"
-                    android:layout_height="232dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="550dp"
                     android:layout_marginTop="88dp"
                     android:ems="10"
                     android:gravity="start|top"
                     android:inputType="textMultiLine"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
-            <Button
-                    android:id="@+id/saveBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="92dp"
-                    android:clickable="true"
-                    android:onClick="saveBtn"
-                    android:text="Save"/>
+            <!--            <Button-->
+            <!--                    android:id="@+id/saveBtn"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginTop="92dp"-->
+            <!--                    android:clickable="true"-->
+            <!--                    android:onClick="saveBtn"-->
+            <!--                    android:text="Save"/>-->
 
             <!--            <Button-->
             <!--                    android:id="@+id/cancelBtn"-->
@@ -44,14 +44,43 @@
             <!--                    android:layout_marginEnd="100dp"-->
             <!--                    android:text="Cancel"/>-->
 
-            <Button
-                    android:id="@+id/shareBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="56dp"
-                    android:clickable="true"
-                    android:onClick="shareBtn"
-                    android:text="share"/>
+            <!--            <Button-->
+            <!--                    android:id="@+id/shareBtn"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginBottom="56dp"-->
+            <!--                    android:clickable="true"-->
+            <!--                    android:onClick="shareBtn"-->
+            <!--                    android:text="share"/>-->
         </LinearLayout>
     </ScrollView>
+    <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="saveBtn"
+            android:text="Save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"/>
+    <Button
+            android:onClick="deleteBtn"
+            android:text="Delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/deleteBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    <Button
+            android:onClick="shareBtn"
+            android:text="Share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/shareBtn"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="26dp"
+            android:layout_marginBottom="18dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

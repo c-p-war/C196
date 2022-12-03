@@ -13,7 +13,7 @@
             android:layout_marginTop="1dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-    >
+            android:id="@+id/scrollView4">
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
@@ -202,27 +202,49 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/course_assessments_recycler"
-                        android:layout_width="match_parent"
-                        android:layout_height="82dp"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="16dp"/>
+                <ScrollView
+                        android:layout_width="407dp"
+                        android:layout_height="722dp"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginTop="1dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                >
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/course_assessments_recycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="82dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="16dp"/>
+                </ScrollView>
             </LinearLayout>
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-<!--                <Button-->
-<!--                        android:id="@+id/notesBtn"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:clickable="true"-->
-<!--                        android:onClick="notesBtn"-->
-<!--                        android:text="Notes"/>-->
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+    <!--    <Button-->
+    <!--            android:id="@+id/saveBtn"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:clickable="true"-->
+    <!--            android:onClick="saveBtn"-->
+    <!--            android:text="Save"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            android:layout_marginBottom="16dp"-->
+    <!--            android:layout_marginStart="16dp"/>-->
+    <!--    <Button-->
+    <!--            android:onClick="deleteBtn"-->
+    <!--            android:text="Delete"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:id="@+id/button"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"/>-->
     <Button
             android:id="@+id/saveBtn"
             android:layout_width="wrap_content"
@@ -234,4 +256,22 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginBottom="16dp"
             android:layout_marginStart="16dp"/>
+    <Button
+            android:onClick="deleteBtn"
+            android:text="Delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/deleteBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    <Button
+            android:onClick="addNoteBtn"
+            android:text="Add Note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addNoteBtn"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="26dp"
+            android:layout_marginBottom="18dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
