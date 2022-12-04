@@ -22,22 +22,27 @@
         <activity
                 android:name=".NotesAdd"
                 android:exported="false"
+                android:label="Notes Add"
                 android:parentActivityName=".Courses"/>
         <activity
                 android:name=".NotesDetails"
                 android:exported="false"
+                android:label="Notes Details"
                 android:parentActivityName=".Courses"/>
         <activity
                 android:name=".AssessmentsAdd"
                 android:exported="false"
+                android:label="Assessments Add"
                 android:parentActivityName=".Assessments"/>
         <activity
                 android:name=".CoursesAdd"
                 android:exported="false"
+                android:label="Courses Add"
                 android:parentActivityName=".Courses"/>
         <activity
                 android:name=".TermsAdd"
                 android:exported="false"
+                android:label="Terms Add"
                 android:parentActivityName=".Terms"/>
         <activity
                 android:name=".AssessmentsDetails"

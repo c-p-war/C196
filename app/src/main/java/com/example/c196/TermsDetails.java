@@ -85,6 +85,7 @@ public class TermsDetails extends AppCompatActivity {
 
         if (courseCount == 0) {
             repository.delete(currentTerm);
+            Toast.makeText(TermsDetails.this, "Term Deleted", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(TermsDetails.this, Terms.class);
             startActivity(intent);
         } else {

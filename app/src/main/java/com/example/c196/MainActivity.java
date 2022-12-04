@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
             repo.insert(new Course(1, 1, "Course A", "12-1-2022", "06-1-2023", "Not Started", "John", "123-456-1234", "john@gmail.com"));
             repo.insert(new Course(2, 1, "Course B", "12-1-2022", "06-1-2023", "Not Started", "Jane", "987-654-3210", "jane@gmail.com"));
             repo.insert(new Assessment(1, "Assessment 1", "11-11-2022", "11-12-2022", "MC", 1));
-            repo.insert(new Note(1,1,"First Note", "test"));
-            repo.insert(new Note(2,2,"Second Note", "test"));
+            repo.insert(new Note(1,1,"First Note", "This is the note for Course A."));
+            repo.insert(new Note(2,2,"Second Note", "This is the note for Course B."));
     }
 
     public void toTerms(View view) {

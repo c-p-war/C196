@@ -1,12 +1,18 @@
 package com.example.c196;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.c196.Database.Repository;
+import com.example.c196.Entity.Assessment;
 import com.example.c196.Entity.Course;
+import com.example.c196.Entity.Term;
+
+import java.util.List;
 
 public class CoursesAdd extends AppCompatActivity {
     EditText editTerm;
@@ -21,6 +27,7 @@ public class CoursesAdd extends AppCompatActivity {
     int courseId;
     int termId;
     Repository repository;
+    boolean isValidTerm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +50,35 @@ public class CoursesAdd extends AppCompatActivity {
         courseId = getIntent().getIntExtra("courseID", -1);
     }
 
+    boolean isDigitsOnly(String str) {
+        return str.isEmpty() && TextUtils.isDigitsOnly(str);
+    }
+
     public void saveBtn(View view) {
         Course course;
-        if (courseId == -1) {
+        String termIdString = editTerm.getText().toString();
+        isValidTerm = false;
+        boolean isChar = !isDigitsOnly(termIdString);
+        boolean termIdIsEmpty = termIdString.equals("");
+        if (!termIdIsEmpty && !isChar){
+            termId = Integer.parseInt(editTerm.getText().toString());
+        }
+        List<Term> allTerms = repository.getAllTerms();
+        for (Term term : allTerms) {
+            if (term.getTermID() == termId) {
+                isValidTerm = true;
+            }
+        }
+        if (courseId == -1 && isValidTerm) {
             int newId = repository.getAllCourses().get(repository.getAllCourses().size() - 1).getCourseID() + 1;
             course = new Course(newId, Integer.parseInt(editTerm.getText().toString()), editTitle.getText().toString(), editStart.getText().toString(), editEnd.getText().toString(), editStatus_.getText().toString(), editName.getText().toString(), editPhone.getText().toString(), editEmail.getText().toString());
             repository.insert(course);
             Intent intent = new Intent(CoursesAdd.this, Courses.class);
             startActivity(intent);
+        } else if (termIdIsEmpty) {
+            Toast.makeText(CoursesAdd.this, "Term ID is required.", Toast.LENGTH_LONG).show();
+        } else if (!isValidTerm){
+            Toast.makeText(CoursesAdd.this, "Term ID not found", Toast.LENGTH_LONG).show();
         }
     }
 }

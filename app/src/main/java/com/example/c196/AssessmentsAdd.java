@@ -2,6 +2,7 @@ package com.example.c196;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -9,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.c196.Database.Repository;
 import com.example.c196.Entity.Assessment;
+import com.example.c196.Entity.Course;
+
+import java.util.List;
 
 public class AssessmentsAdd extends AppCompatActivity {
     EditText editCourse;
@@ -20,6 +24,7 @@ public class AssessmentsAdd extends AppCompatActivity {
     int assessmentId;
     int assessmentCount;
     Repository repository;
+    boolean isValidCourse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,28 +41,44 @@ public class AssessmentsAdd extends AppCompatActivity {
         assessmentId = getIntent().getIntExtra("assessmentID", -1);
     }
 
+    boolean isDigitsOnly(String str) {
+        return str.isEmpty() && TextUtils.isDigitsOnly(str);
+    }
+
     public void saveBtn(View view) {
-        courseId = Integer.parseInt(editCourse.getText().toString());
-        if (courseId > 0) {
-        assessmentCount = repository.getCourseAssessmentsCount(courseId);
+        // TODO: The courseId is not correctly flowing down, and currently requires explicit generation from the EditText
+        String courseIdString = editCourse.getText().toString();
+        isValidCourse = false;
+        boolean isChar = !isDigitsOnly(courseIdString);
+        boolean courseIdIsEmpty = courseIdString.equals("");
+        if (!courseIdIsEmpty && !isChar) {
+            courseId = Integer.parseInt(editCourse.getText().toString());
         }
+        List<Course> allCourses = repository.getAllCourses();
+        for (Course course : allCourses) {
+            if (course.getCourseID() == Integer.parseInt(editCourse.getText().toString())) {
+                isValidCourse = true;
+            }
+        }
+
+        if (isValidCourse) {
+            assessmentCount = repository.getCourseAssessmentsCount(Integer.parseInt(editCourse.getText().toString()));
+        }
+
         Assessment assessment;
         // TODO: Challenge talking point, assessment counts
-        if (assessmentId == -1 && assessmentCount < 5) {
+        if (isValidCourse && assessmentId == -1 && assessmentCount < 5) {
             int newId = repository.getAllAssessments().get(repository.getAllAssessments().size() - 1).getAssessmentID() + 1;
             assessment = new Assessment(newId, editTitle.getText().toString(), editStart.getText().toString(), editEnd.getText().toString(), editType.getText().toString(), Integer.parseInt(editCourse.getText().toString()));
             repository.insert(assessment);
             Intent intent = new Intent(AssessmentsAdd.this, Assessments.class);
             startActivity(intent);
-        } else {
-
-//            Context context = getApplicationContext();
-//            CharSequence text = "Too many assessments";
-//            int duration = Toast.LENGTH_LONG;
-//            Toast toast = Toast.makeText(context, text, duration);
-//            toast.show();
-//            System.out.println("Too many assessments");
-            // TODO: validation alerts
+        } else if (courseIdIsEmpty) {
+            Toast.makeText(AssessmentsAdd.this, "Course ID is required.", Toast.LENGTH_LONG).show();
+        } else if (!isValidCourse) {
+            Toast.makeText(AssessmentsAdd.this, "Course ID not found", Toast.LENGTH_LONG).show();
+        } else if (assessmentCount >= 5) {
+            Toast.makeText(AssessmentsAdd.this, "Assessment limit (5) has already reached", Toast.LENGTH_LONG).show();
         }
     }
 }

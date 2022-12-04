@@ -13,10 +13,7 @@ import com.example.c196.Entity.Course;
 import com.example.c196.Entity.Note;
 import com.example.c196.Entity.Term;
 
-// TODO: Increment version numbers when changing DB
-// TODO: Increment version number when changing variables ex string to date
-// TODO: Save date as strings, and create formatter utility similar to software ii
-@Database(entities = {Assessment.class, Course.class, Term.class, Note.class}, version = 26, exportSchema = false)
+@Database(entities = {Assessment.class, Course.class, Term.class, Note.class}, version = 27, exportSchema = false)
 public abstract class C196DatabaseBuilder extends RoomDatabase {
     public abstract AssessmentsDAO assessmentsDAO();
 
