@@ -16,6 +16,7 @@ public class AssessmentsAdd extends AppCompatActivity {
     EditText editType;
     int courseId;
     int assessmentId;
+    int assessmentCount;
     Repository repository;
 
     @Override
@@ -30,19 +31,25 @@ public class AssessmentsAdd extends AppCompatActivity {
         editStart = findViewById(R.id.edit_assessment_start_date);
         editEnd = findViewById(R.id.edit_end_date);
         editType = findViewById(R.id.edit_type);
-        courseId = getIntent().getIntExtra("courseID", -1);
         assessmentId = getIntent().getIntExtra("assessmentID", -1);
     }
 
-
     public void saveBtn(View view) {
+        courseId = Integer.parseInt(editCourse.getText().toString());
+        if (courseId > 0) {
+        assessmentCount = repository.getCourseAssessmentsCount(courseId);
+        }
         Assessment assessment;
-        if (assessmentId == -1) {
+        // TODO: Challenge talking point, assessment counts
+        if (assessmentId == -1 && assessmentCount < 5) {
             int newId = repository.getAllAssessments().get(repository.getAllAssessments().size() - 1).getAssessmentID() + 1;
             assessment = new Assessment(newId, editTitle.getText().toString(), editStart.getText().toString(), editEnd.getText().toString(), editType.getText().toString(), Integer.parseInt(editCourse.getText().toString()));
             repository.insert(assessment);
             Intent intent = new Intent(AssessmentsAdd.this, Assessments.class);
             startActivity(intent);
+        } else {
+            System.out.println("Too many assessments");
+            // TODO: validation alerts
         }
     }
 }

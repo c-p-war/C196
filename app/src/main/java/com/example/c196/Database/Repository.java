@@ -27,6 +27,7 @@ public class Repository {
     private List<Course> mAllCourses;
     private List<Term> mAllTerms;
     private List<Note> mAllNotes;
+    private int courseAssessmentsCount;
 
     private static int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -226,6 +227,19 @@ public class Repository {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public int getCourseAssessmentsCount(int courseId) {
+        System.out.println("Inside of repo, courseId: " + courseId);
+        databaseExecutor.execute(() -> {
+            courseAssessmentsCount = mAssessmentsDAO.getCourseAssessmentsCount(courseId);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return courseAssessmentsCount;
     }
 
 

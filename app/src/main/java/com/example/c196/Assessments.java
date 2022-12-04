@@ -29,6 +29,7 @@ public class Assessments extends AppCompatActivity {
     }
 
     public void toAddAssessment(View view) {
+//        TODO: Do not let the user add more than 5 assessments
         Intent intent = new Intent(Assessments.this, AssessmentsAdd.class);
         startActivity(intent);
     }

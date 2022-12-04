@@ -15,4 +15,7 @@ public interface AssessmentsDAO {
     void delete(Assessment assessment);
     @Query("SELECT * FROM assessments ORDER BY assessmentID ASC")
     List<Assessment> getAllAssessments();
+
+    @Query("SELECT COUNT(*) FROM assessments WHERE courseID = :courseId")
+    int getCourseAssessmentsCount(int courseId);
 }
