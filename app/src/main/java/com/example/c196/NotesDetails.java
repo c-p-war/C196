@@ -1,6 +1,8 @@
 package com.example.c196;
 
 import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,8 +45,28 @@ public class NotesDetails extends AppCompatActivity {
         editCourseId.setText(Integer.toString(courseId));
         editNoteId.setText(Integer.toString(noteId));
     }
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_notes_details, menu);
+        return true;
+    }
 
-    public void shareBtn(View view) {
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+            case R.id.share:
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, noteText);
+                sendIntent.putExtra(Intent.EXTRA_TITLE, noteTitle);
+                // Bellow will not work without text/plain
+                sendIntent.setType("text/plain");
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void saveBtn(View view) {

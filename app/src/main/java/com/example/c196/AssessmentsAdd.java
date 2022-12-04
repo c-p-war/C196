@@ -1,8 +1,10 @@
 package com.example.c196;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.c196.Database.Repository;
@@ -48,7 +50,13 @@ public class AssessmentsAdd extends AppCompatActivity {
             Intent intent = new Intent(AssessmentsAdd.this, Assessments.class);
             startActivity(intent);
         } else {
-            System.out.println("Too many assessments");
+
+//            Context context = getApplicationContext();
+//            CharSequence text = "Too many assessments";
+//            int duration = Toast.LENGTH_LONG;
+//            Toast toast = Toast.makeText(context, text, duration);
+//            toast.show();
+//            System.out.println("Too many assessments");
             // TODO: validation alerts
         }
     }
