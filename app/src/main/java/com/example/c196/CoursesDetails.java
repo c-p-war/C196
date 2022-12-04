@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -259,6 +260,8 @@ public class CoursesDetails extends AppCompatActivity {
         Intent intent = new Intent(CoursesDetails.this, NotesAdd.class);
         intent.putExtra("courseID", courseId);
         startActivity(intent);
+        } else {
+            Toast.makeText(CoursesDetails.this, "Only one note allowed.", Toast.LENGTH_LONG).show();
         }
     }
 }

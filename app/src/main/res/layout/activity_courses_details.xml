@@ -7,13 +7,12 @@
         android:layout_height="match_parent"
         tools:context=".CoursesDetails">
     <ScrollView
-            android:layout_width="407dp"
-            android:layout_height="722dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="1dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/scrollView4">
+            app:layout_constraintTop_toTopOf="parent">
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
@@ -189,7 +188,7 @@
                     android:orientation="horizontal">
                 <ScrollView
                         android:layout_width="407dp"
-                        android:layout_height="722dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="1dp"
                         android:layout_marginTop="1dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -207,36 +206,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+                <Button
+                        android:id="@+id/saveBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:onClick="saveBtn"
+                        android:text="Save" android:layout_marginLeft="16dp"/>
+                <Button
+                        android:onClick="deleteBtn"
+                        android:text="Delete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/deleteBtn" android:layout_marginLeft="16dp"/>
+                <Button
+                        android:onClick="addNoteBtn"
+                        android:text="Add Note"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/addNoteBtn" android:layout_marginLeft="16dp"/>
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    <Button
-            android:id="@+id/saveBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:onClick="saveBtn"
-            android:text="Save"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="16dp"
-            android:layout_marginStart="16dp"/>
-    <Button
-            android:onClick="deleteBtn"
-            android:text="Delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/deleteBtn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
-    <Button
-            android:onClick="addNoteBtn"
-            android:text="Add Note"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/addNoteBtn"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="26dp"
-            android:layout_marginBottom="18dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
