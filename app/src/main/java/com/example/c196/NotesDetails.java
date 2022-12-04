@@ -56,6 +56,8 @@ public class NotesDetails extends AppCompatActivity {
         } else {
             note = new Note(Integer.parseInt(editNoteId.getText().toString()), Integer.parseInt(editCourseId.getText().toString()), editTitle.getText().toString(), editNote.getText().toString());
             repository.update(note);
+            Intent intent = new Intent(NotesDetails.this, Courses.class);
+            startActivity(intent);
         }
     }
 

@@ -36,6 +36,7 @@ public class CoursesDetails extends AppCompatActivity {
     String instructorEmail;
     Repository repository;
     Course currentCourse;
+    ArrayList<Note> matchingNotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +92,7 @@ public class CoursesDetails extends AppCompatActivity {
         Repository repoNote = new Repository(getApplication());
         recyclerViewNotes.setAdapter(noteAdapter);
         recyclerViewNotes.setLayoutManager(new LinearLayoutManager(this));
-        List<Note> matchingNotes = new ArrayList<>();
+        matchingNotes = new ArrayList<>();
         for (Note n : repoNote.getAllNotes()) {
             if (n.getCourseID() == courseId) matchingNotes.add(n);
         }
@@ -126,7 +127,10 @@ public class CoursesDetails extends AppCompatActivity {
     }
 
     public void addNoteBtn(View view) {
+        if (matchingNotes.size() == 0){
         Intent intent = new Intent(CoursesDetails.this, NotesAdd.class);
+        intent.putExtra("courseID", courseId);
         startActivity(intent);
+        }
     }
 }

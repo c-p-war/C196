@@ -13,7 +13,6 @@
             android:layout_marginTop="1dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-<!--            android:id="@+id/scrollView2">-->
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
@@ -62,23 +61,6 @@
                         android:hint="String">
                 </EditText>
             </LinearLayout>
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                <TextView android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="Add Course:">
-                </TextView>
-                <EditText
-                        android:id="@+id/editTermCourses"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="Course ID">
-                </EditText>
-            </LinearLayout>
-
-
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

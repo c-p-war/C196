@@ -12,17 +12,20 @@ public class NotesAdd extends AppCompatActivity {
     EditText editNote;
     EditText editCourseId;
     EditText editTitle;
+    int courseId;
     Repository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notes_details);
+        setContentView(R.layout.activity_notes_add);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         editNote = findViewById(R.id.editCourseNote);
         editCourseId = findViewById(R.id.editCourseId);
         editTitle = findViewById(R.id.editTitle);
+        courseId = getIntent().getIntExtra("courseID", -1);
+        editCourseId.setText(Integer.toString(courseId));
         Repository repo = new Repository(getApplication());
         repository = repo;
     }
